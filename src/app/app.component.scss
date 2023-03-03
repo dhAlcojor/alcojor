@@ -2,6 +2,12 @@
 @use '@angular/material' as mat;
 @import "../variables";
 
+#toolbar-logo {
+  height: 1.5rem;
+  width: 1.5rem;
+  vertical-align: middle;
+}
+
 mat-sidenav-container {
   min-height: 100%;
 
