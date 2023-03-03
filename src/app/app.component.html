@@ -1,9 +1,25 @@
-<mat-toolbar color="primary">
-  <button mat-icon-button aria-label="Menu button">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>{{title}}</span>
-</mat-toolbar>
-<main>
-  <router-outlet></router-outlet>
-</main>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="over">
+    <mat-nav-list>
+      <mat-list-item routerLinkActive="active" *ngFor="let link of links">
+        <a [routerLink]="link.route" (click)="sidenav.close()">{{link.title}}</a>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button id="menuButton" aria-label="Menu button" mat-icon-button (click)="sidenav.open()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/home">Home</button>
+        <button mat-menu-item routerLink="/about">About</button>
+      </mat-menu>
+      <span>{{title}}</span>
+    </mat-toolbar>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
